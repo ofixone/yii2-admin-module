@@ -3,10 +3,13 @@
 namespace ofixone\admin;
 
 use ofixone\admin\interfaces\AdminInterface;
+use ofixone\admin\interfaces\ModuleInterface;
 use yii\base\BootstrapInterface;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use yii\web\Application;
 use yii\web\IdentityInterface;
 use yii\web\NotAcceptableHttpException;
 
@@ -53,7 +56,45 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         if($app instanceof \yii\console\Application) {
             $this->controllerNamespace = "ofixone\admin\console";
+        } else {
+            if(strpos(\Yii::$app->request->url, $this->id) !== false) {
+                $this->bootstrapLoadModules();
+                $this->bootstrapAddRules($app);
+            }
         }
+    }
+
+    public function bootstrapLoadModules()
+    {
+        if(!empty($this->modules)) {
+            foreach ($this->modules as $moduleId => $moduleConfig) {
+                $this->getModule($moduleId, true);
+            }
+        }
+    }
+
+    public function bootstrapAddRules(\yii\base\Application $app)
+    {
+        $app->urlManager->addRules([
+            ['pattern' => $this->id, 'route' => $this->id . "/module/dashboard"],
+            ['pattern' => $this->id . "/<action:login|logout>", 'route' => $this->id . "/auth/<action>"]
+        ], false);
+        foreach($this->modules as $module) {
+            if($module instanceof ModuleInterface) {
+                $app->urlManager->addRules($module->addRules(), false);
+            }
+        }
+    }
+
+    public function getMenuItems()
+    {
+        $menuItems = [];
+        foreach($this->modules as $module) {
+            if($module instanceof ModuleInterface) {
+                $menuItems = ArrayHelper::merge($menuItems, $module->addMenuItem());
+            }
+        }
+        return $menuItems;
     }
 
     public function init()
@@ -74,5 +115,14 @@ class Module extends \yii\base\Module implements BootstrapInterface
             );
         }
         unset($test);
+    }
+
+    public function getDevMenuItems()
+    {
+        return [
+            ['label' => 'Разработчик', 'options' => ['class' => 'header']],
+            ['label' => 'Генератор кода', 'icon' => 'file-code-o', 'url' => ['/gii']],
+            ['label' => 'Панель отладки', 'icon' => 'dashboard', 'url' => ['/debug']]
+        ];
     }
 }

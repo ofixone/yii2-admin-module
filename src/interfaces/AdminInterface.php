@@ -10,4 +10,5 @@ interface AdminInterface extends IdentityInterface
     public function setLogin($value);
     public function setPassword($value);
     public function getPasswordHash(): string;
+    public function getStatusString(): string;
 }

@@ -4,7 +4,7 @@
  * @var string $content
  * @var \ofixone\admin\Module $module
  */
-$module = Yii::$app->controller->module;
+$module = Yii::$app->getModule('admin');
 ?>
 <header class="main-header">
     <a class="logo" href="<?= \yii\helpers\Url::to(Yii::$app->homeUrl) ?>">
