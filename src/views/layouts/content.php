@@ -5,6 +5,7 @@
  */
 
 use yii\widgets\Breadcrumbs;
+use ofixone\admin\widgets\alert\Widget as Alert;
 
 ?>
 <div class="content-wrapper">
@@ -14,6 +15,7 @@ use yii\widgets\Breadcrumbs;
         ]) ?>
     </section>
     <section class="content">
+        <?= Alert::widget() ?>
         <?= $content ?>
     </section>
 </div>
