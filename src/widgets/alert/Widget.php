@@ -49,7 +49,7 @@ class Widget extends \yii\bootstrap\Widget
     public function init()
     {
         parent::init();
-        $flashes = Yii::$app->session->getAllFlashes(true);
+        $flashes = Yii::$app->session->getAllFlashes();
         foreach($flashes as $item) {
             if(!empty($item['js'])) {
                 $this->jsAlerts[] = $item;

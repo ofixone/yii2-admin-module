@@ -1,8 +1,8 @@
 {
-    "name": "ofixone/yii2-improved-admin",
+    "name": "ofixone/yii2-imp-admin",
     "description": "Yii2 Improved Admin Module",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","admin"],
+    "keywords": ["yii2","extension","improved","admin"],
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -13,10 +13,6 @@
     "require": {
         "yiisoft/yii2": "~2.0.0",
         "dmstr/yii2-adminlte-asset": "^2.6.2",
-        "kartik-v/yii2-date-range": "^1.6",
-        "kartik-v/yii2-grid": "^3.1",
-        "kartik-v/yii2-widget-activeform": "^1.5",
-        "kartik-v/yii2-widgets": "^3.4",
         "npm-asset/jquery-toast-plugin": "^1.3"
     },
     "autoload": {
