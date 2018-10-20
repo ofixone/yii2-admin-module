@@ -89,9 +89,28 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function getMenuItems()
     {
         $menuItems = [];
+        $groups = [];
         foreach($this->modules as $module) {
             if($module instanceof ModuleInterface) {
-                $menuItems = ArrayHelper::merge($menuItems, $module->addMenuItem());
+                if(empty(($items = $module->addMenuItem())['group'])){
+                    foreach($items as $item) {
+                        $menuItems[] = $item;
+                    }
+                } else {
+                    $group = ArrayHelper::remove($items, 'group');
+                    if(empty($groups[$group])) {
+                        $groups[$group] = [];
+                    }
+                    foreach($items as $item) {
+                        $groups[$group][] = $item;
+                    }
+                }
+            }
+        }
+        if(!empty($groups)) {
+            foreach($groups as $group => $items) {
+                $menuItems[] = ['label' => $group, 'options' => ['class' => ['header']]];
+                $menuItems = ArrayHelper::merge($menuItems, $items);
             }
         }
         return $menuItems;
