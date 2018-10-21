@@ -17,7 +17,7 @@ $module = Yii::$app->getModule('admin');
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?= \yii\helpers\Url::to(['auth/logout']) ?>">Выйти</a>
+                    <a href="<?= \yii\helpers\Url::to(['/admin/auth/logout']) ?>">Выйти</a>
                 </li>
             </ul>
         </div>
