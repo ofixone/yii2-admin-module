@@ -18,6 +18,7 @@ class ModuleAsset extends AssetBundle
     ];
 
     public $depends = [
+        JquerySlimscrollAsset::class,
         AdminLteAsset::class
     ];
 }
