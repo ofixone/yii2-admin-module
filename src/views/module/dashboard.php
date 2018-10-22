@@ -2,7 +2,6 @@
 /**
  * @var \yii\web\View $this
  */
-$this->title = 'Авторизация';
+$this->title = 'Панель управления';
 ?>
-1
 
