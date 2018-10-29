@@ -1,8 +1,8 @@
 {
-    "name": "ofixone/yii2-imp-admin",
-    "description": "Yii2 Improved Admin Module",
+    "name": "ofixone/yii2-admin-module",
+    "description": "Yii2 Admin Module",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","improved","admin"],
+    "keywords": ["yii2","extension","admin","module"],
     "license": "BSD-3-Clause",
     "authors": [
         {
