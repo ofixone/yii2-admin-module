@@ -43,7 +43,7 @@ class AuthController extends Controller
             } while (1);
             do {
                 echo 'Password (generate randomly): ';
-                $password = strtolower(trim(fgets(STDIN)));
+                $password = trim(fgets(STDIN));
                 if (!empty($password)) {
                     if (preg_match('/^[a-zA-Z0-9_]{1,}$/', $password)) {
                         break;
