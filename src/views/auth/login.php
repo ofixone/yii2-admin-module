@@ -6,7 +6,7 @@
  */
 
 use yii\helpers\Html;
-use kartik\form\ActiveForm;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Административная панель';
 
@@ -36,6 +36,5 @@ $module = Yii::$app->controller->module;
             </div>
         </div>
         <?php ActiveForm::end(); ?>
-
     </div>
 </div>
