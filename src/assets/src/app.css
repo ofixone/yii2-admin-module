@@ -1,0 +1,11 @@
+.login-page.skin-red  {
+    background-color: #222d32;
+}
+.login-page.skin-red .login-logo b {
+    color: white;
+}
+
+.login-page.skin-red .btn-primary {
+    background-color: #DE4B35;
+    border-color: #dd4b39;
+}

@@ -26,6 +26,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public $name = 'Администрирование';
     public $shortName = 'АДМ';
     public $adminAssignment = "@";
+    public $skin = 'skin-blue';
 
     public $adminModel;
 
