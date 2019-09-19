@@ -27,7 +27,7 @@ $user = Yii::$app->user->identity;
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => \yii\helpers\ArrayHelper::merge(
-                    $module->menuItemsCallback(),
+                    call_user_func($module->menuItemsCallback, Yii::$app),
                     $module->getDevMenuItems()
                 )
             ]
