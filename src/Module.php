@@ -45,7 +45,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
                         ],
                         [
                             'allow' => true,
-                            'roles' => [$this->adminAssignment]
+                            'roles' => [
+                                $this->adminAssignment ? call_user_func($this->adminAssignment, $this) : '@'
+                            ]
                         ]
                     ]
                 ]
