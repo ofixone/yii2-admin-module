@@ -16,6 +16,11 @@ use yii\web\View;
 
 class Widget extends \yii\bootstrap\Widget
 {
+    const TYPE_SUCCESS = 'success';
+    const TYPE_ERROR = 'danger';
+    const TYPE_WARNING = 'warning';
+    const TYPE_INFO = 'info';
+
     protected $alerts = [];
     protected $jsAlerts = [];
     protected $defaultJsConfig = [
@@ -24,23 +29,19 @@ class Widget extends \yii\bootstrap\Widget
         'hideAfter' => 6000,
     ];
     protected $alertTypes = [
-        'error' => [
+        self::TYPE_ERROR => [
             'class' => 'alert-danger',
             'icon' => '<i class="icon fa fa-ban"></i>',
         ],
-        'danger' => [
-            'class' => 'alert-danger',
-            'icon' => '<i class="icon fa fa-ban"></i>',
-        ],
-        'success' => [
+        self::TYPE_SUCCESS => [
             'class' => 'alert-success',
             'icon' => '<i class="icon fa fa-check"></i>',
         ],
-        'info' => [
+        self::TYPE_INFO => [
             'class' => 'alert-info',
             'icon' => '<i class="icon fa fa-info"></i>',
         ],
-        'warning' => [
+        self::TYPE_WARNING => [
             'class' => 'alert-warning',
             'icon' => '<i class="icon fa fa-warning"></i>',
         ],
