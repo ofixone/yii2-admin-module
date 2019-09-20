@@ -75,7 +75,7 @@ class Widget extends \yii\bootstrap\Widget
                 $this->options['class'] = $this->alertTypes[$type]['class'];
                 $this->options['id'] = $this->getId() . '-' . $type;
                 echo Alert::widget([
-                    'body' => $this->alertTypes[$type]['icon'] . $data['message'],
+                    'body' => $this->alertTypes[$type]['icon'] . $data['text'],
                     'options' => $this->options,
                 ]);
             }
